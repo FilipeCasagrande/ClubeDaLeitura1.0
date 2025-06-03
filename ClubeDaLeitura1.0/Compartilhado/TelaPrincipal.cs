@@ -33,7 +33,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
             Console.WriteLine();
 
             Console.Write("Escolha uma das opções: ");
-            opcaoEscolhida = Console.ReadLine()[0];
+            opcaoEscolhida = Console.ReadLine()[0]; 
         }
 
         public TelaBase ObterTela()
