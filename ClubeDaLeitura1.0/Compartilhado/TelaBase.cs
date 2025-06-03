@@ -79,7 +79,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
 
             VisualizarRegistros(false);
 
-            Console.Write("Digite o id do registro que deseja selecionar: ");
+            Console.Write("Digite o Id do registro que deseja selecionar: ");
             int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine();
@@ -102,7 +102,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
 
             VisualizarRegistros(false);
 
-            Console.Write("Digite o id do registro que deseja selecionar: ");
+            Console.Write("Digite o Id do registro que deseja selecionar: ");
             int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine();

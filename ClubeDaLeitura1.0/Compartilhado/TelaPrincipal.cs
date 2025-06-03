@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClubeDaLeitura1._0.Amigo;
 
 namespace ClubeDaLeitura1._0.Compartilhado
 {
@@ -10,8 +11,13 @@ namespace ClubeDaLeitura1._0.Compartilhado
     {
     private char opcaoEscolhida;
 
+        private RepositorioBase repositorioAmigo;
+        private TelaAmigo telaAmigo;
+
         public TelaPrincipal()
         {
+            repositorioAmigo = new RepositorioAmigo();
+            telaAmigo = new TelaAmigo(repositorioAmigo);
         }
 
         public void ApresentarMenuPrincipal()
@@ -39,7 +45,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
         public TelaBase ObterTela()
         {
             if (opcaoEscolhida == '1')
-                return null;
+                return telaAmigo;
 
             else if (opcaoEscolhida == '2')
                 return null;
