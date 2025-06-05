@@ -8,7 +8,6 @@
         public void CadastrarRegistro(EntidadeBase novoRegistro)
         {
             registros[contadorRegistros] = novoRegistro;
-
             contadorRegistros++;
         }
 

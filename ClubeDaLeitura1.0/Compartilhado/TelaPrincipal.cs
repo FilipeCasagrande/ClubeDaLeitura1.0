@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClubeDaLeitura1._0.Amigo;
 using ClubeDaLeitura1._0.Caixas;
+using ClubeDaLeitura1._0.Revistas;
 
 namespace ClubeDaLeitura1._0.Compartilhado
 {
@@ -15,8 +16,11 @@ namespace ClubeDaLeitura1._0.Compartilhado
         private RepositorioCaixa repositorioCaixa;
         private TelaCaixa telaCaixa;
 
-        private RepositorioBase repositorioAmigo;
+        private RepositorioAmigo repositorioAmigo;
         private TelaAmigo telaAmigo;
+
+        private RepositorioRevistas repositorioRevistas;
+        private TelaRevistas telaRevistas;
 
         public TelaPrincipal()
         {
@@ -25,6 +29,9 @@ namespace ClubeDaLeitura1._0.Compartilhado
 
             repositorioCaixa = new RepositorioCaixa();
             telaCaixa = new TelaCaixa(repositorioCaixa);
+
+            repositorioRevistas = new RepositorioRevistas();
+            telaRevistas = new TelaRevistas(repositorioRevistas, repositorioCaixa);
         }
 
         public void ApresentarMenuPrincipal()
@@ -58,7 +65,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
                 return telaCaixa;
 
             else if (opcaoEscolhida == '3')
-                return null;
+                return telaRevistas;
 
             else if (opcaoEscolhida == '4')
                 return null;
