@@ -10,7 +10,7 @@ namespace ClubeDaLeitura1._0.Amigo
 {
     public class Amigo : EntidadeBase
     {
-    public string Nome { get; set; }
+        public string Nome { get; set; }
         public string NomeResponsavel { get; set; }
         public string Telefone { get; set; }
 
@@ -38,9 +38,9 @@ namespace ClubeDaLeitura1._0.Amigo
                 erros += "O campo \"Nome\" deve conter entre 3 e 100 caracteres.\n";
 
             if (NomeResponsavel.Length < 3 || NomeResponsavel.Length > 100)
-                erros += "O campo \"Nome do Responsável\" deve conter entre 3 e 100 caracteres.\n"; 
-    
-        if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)?\s?(9\d{4}|\d{4})-?\d{4}$"))
+                erros += "O campo \"Nome do Responsável\" deve conter entre 3 e 100 caracteres.\n";
+
+            if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)?\s?(9\d{4}|\d{4})-?\d{4}$"))
                 erros += "O campo \"Telefone\" deve seguir o padrão (DDD) 22222-2222.";
 
             return erros;

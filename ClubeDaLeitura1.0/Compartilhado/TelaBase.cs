@@ -35,7 +35,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
             return opcaoEscolhida;
         }
 
-        public void CadastrarRegistro()
+        public virtual void CadastrarRegistro()
         {
             ExibirCabecalho();
 

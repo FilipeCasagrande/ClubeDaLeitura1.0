@@ -4,9 +4,11 @@
     {
         private EntidadeBase[] registros = new EntidadeBase[100];
         private int contadorRegistros = 0;
+        private int contadorId = 0;
 
         public void CadastrarRegistro(EntidadeBase novoRegistro)
         {
+            novoRegistro.Id = contadorId++;
             registros[contadorRegistros] = novoRegistro;
             contadorRegistros++;
         }
@@ -22,7 +24,6 @@
 
             return true;
         }
-
         public bool ExcluirRegistro(int idSelecionado)
         {
             for (int i = 0; i < registros.Length; i++)
