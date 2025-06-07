@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura1._0.Compartilhado;
+using Microsoft.Win32;
 
 namespace ClubeDaLeitura1._0.Caixas
 {
@@ -8,6 +9,66 @@ namespace ClubeDaLeitura1._0.Caixas
         {
         }
 
+        public override void CadastrarRegistro()
+        {
+            ExibirCabecalho();
+
+            Console.WriteLine($"Cadastro de {nomeEntidade}");
+
+            Console.WriteLine();
+
+            Caixa novoRegistro = (Caixa)ObterDados();
+
+            string erros = novoRegistro.Validar();
+
+            if (erros.Length > 0)
+            {
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(erros);
+                Console.ResetColor();
+
+                Console.Write("\nDigite ENTER para continuar...");
+                Console.ReadLine();
+
+                CadastrarRegistro();
+
+                return;
+            }
+
+            EntidadeBase[] registros = repositorio.SelecionarRegistros();
+
+            for (int i = 0; i < registros.Length; i++)
+            {
+                Caixa amigoRegistrado = (Caixa)registros[i];
+
+                if (amigoRegistrado == null)
+                    continue;
+
+                if (amigoRegistrado.Etiqueta == novoRegistro.Etiqueta)
+                {
+                    Console.WriteLine();
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Esta etiqueta ja foi cadastrada!");
+                    Console.ResetColor();
+
+                    Console.Write("\nDigite ENTER para continuar...");
+                    Console.ReadLine();
+
+                    CadastrarRegistro();
+                    return;
+                }
+            }
+
+            repositorio.CadastrarRegistro(novoRegistro);
+
+            Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ReadLine();
+        }
+
+        
         public override void VisualizarRegistros(bool exibirCabecalho)
         {
             if (exibirCabecalho == true)

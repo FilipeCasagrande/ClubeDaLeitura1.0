@@ -26,6 +26,7 @@ namespace ClubeDaLeitura1._0.Revistas
             Status = "Disponível";
         }
 
+
         public override void AtualizarRegistro(EntidadeBase registroAtualizado)
         {
             Revistas revistaAtualizada = (Revistas)registroAtualizado;

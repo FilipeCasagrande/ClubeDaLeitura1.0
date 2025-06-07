@@ -36,7 +36,7 @@ namespace ClubeDaLeitura1._0.Caixas
             string erros = string.Empty;
 
             if (string.IsNullOrWhiteSpace(Etiqueta) || Etiqueta.Length > 50)
-                erros += "O campo \"Etiqueta\" é obrigatório e recebe no máximo 50 caracteres.";
+                erros += "O campo \"Etiqueta\" é obrigatório e recebe no máximo 50 caracteres.\n";
 
             if (string.IsNullOrWhiteSpace(Cor))
                 erros += "O campo \"Cor\" é obrigatório.";

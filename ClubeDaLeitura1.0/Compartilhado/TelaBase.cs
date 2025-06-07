@@ -92,7 +92,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
             Console.ReadLine();
         }
 
-        public void ExcluirRegistro()
+        public virtual void ExcluirRegistro()
         {
             ExibirCabecalho();
 
