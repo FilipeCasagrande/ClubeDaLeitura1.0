@@ -45,17 +45,17 @@ namespace ClubeDaLeitura1._0.Revistas
 
             for (int i = 0; i < registros.Length; i++)
             {
-                Revistas amigoRegistrado = (Revistas)registros[i];
+                Revistas revistaRegistrada = (Revistas)registros[i];
 
-                if (amigoRegistrado == null)
+                if (revistaRegistrada == null)
                     continue;
 
-                if (amigoRegistrado.Titulo == novoRegistro.Titulo)
+                if (revistaRegistrada.Titulo == novoRegistro.Titulo && revistaRegistrada.NumeroEdicao == novoRegistro.NumeroEdicao)
                 {
                     Console.WriteLine();
 
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Título já cadastrado!");
+                    Console.WriteLine("Título ou edição já cadastrado!");
                     Console.ResetColor();
 
                     Console.Write("\nDigite ENTER para continuar...");
