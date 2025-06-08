@@ -9,8 +9,6 @@ namespace ClubeDaLeitura1._0.Amigo
 
         }
 
-
-
         public override void CadastrarRegistro()
         {
             ExibirCabecalho();

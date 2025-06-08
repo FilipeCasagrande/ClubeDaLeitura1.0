@@ -8,7 +8,7 @@ namespace ClubeDaLeitura1._0.Revistas
         private RepositorioCaixa repositorioCaixa;
 
         public TelaRevistas(RepositorioRevistas repositorio, RepositorioCaixa repositorioCaixa)
-            : base("Revista", repositorio)
+            : base("Emprestimo", repositorio)
         {
             this.repositorioCaixa = repositorioCaixa;
         }
@@ -21,7 +21,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             Console.WriteLine();
 
-            Revista novoRegistro = (Revista)ObterDados();
+            Emprestimo novoRegistro = (Emprestimo)ObterDados();
 
             string erros = novoRegistro.Validar();
 
@@ -45,7 +45,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             for (int i = 0; i < registros.Length; i++)
             {
-                Revista revistaRegistrada = (Revista)registros[i];
+                Emprestimo revistaRegistrada = (Emprestimo)registros[i];
 
                 if (revistaRegistrada == null)
                     continue;
@@ -77,7 +77,7 @@ namespace ClubeDaLeitura1._0.Revistas
             if (exibirCabecalho == true)
                 ExibirCabecalho();
 
-            Console.WriteLine("Visualização de Revista");
+            Console.WriteLine("Visualização de Emprestimo");
 
             Console.WriteLine();
 
@@ -90,7 +90,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             for (int i = 0; i < revistas.Length; i++)
             {
-                Revista r = (Revista)revistas[i];
+                Emprestimo r = (Emprestimo)revistas[i];
 
                 if (r == null)
                     continue;
@@ -122,7 +122,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             Caixa caixaSelecionada = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);
 
-            Revista revista = new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
+            Emprestimo revista = new Emprestimo(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
 
             return revista;
         }

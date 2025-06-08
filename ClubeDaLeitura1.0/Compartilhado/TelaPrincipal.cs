@@ -46,7 +46,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
 
             Console.WriteLine("1 - Controle de Amigos");
             Console.WriteLine("2 - Controle de Caixas");
-            Console.WriteLine("3 - Controle de Revista");
+            Console.WriteLine("3 - Controle de Emprestimo");
             Console.WriteLine("4 - Controle de Empréstimos");
             Console.WriteLine("S - Sair");
 

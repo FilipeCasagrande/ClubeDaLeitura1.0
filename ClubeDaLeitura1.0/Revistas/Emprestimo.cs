@@ -9,7 +9,7 @@ using ClubeDaLeitura1._0.Compartilhado;
 
 namespace ClubeDaLeitura1._0.Revistas
 {
-    public class Revista : EntidadeBase
+    public class Emprestimo : EntidadeBase
     {
         public string Titulo;
         public int NumeroEdicao;
@@ -18,7 +18,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
         public string Status;
 
-        public Revista(string titulo, int numeroEdicao, int anoPublicacao, Caixa caixa)
+        public Emprestimo(string titulo, int numeroEdicao, int anoPublicacao, Caixa caixa)
         {
             Titulo = titulo;
             NumeroEdicao = numeroEdicao;
@@ -30,7 +30,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
         public override void AtualizarRegistro(EntidadeBase registroAtualizado)
         {
-            Revista revistaAtualizada = (Revista)registroAtualizado;
+            Emprestimo revistaAtualizada = (Emprestimo)registroAtualizado;
 
             Titulo = revistaAtualizada.Titulo;
             NumeroEdicao = revistaAtualizada.NumeroEdicao;

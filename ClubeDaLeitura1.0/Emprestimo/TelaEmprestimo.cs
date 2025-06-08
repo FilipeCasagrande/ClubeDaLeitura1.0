@@ -14,9 +14,11 @@ namespace ClubeDaLeitura1._0.Emprestimo
     {
         private RepositorioAmigo repositorioAmigo;
         private RepositorioRevistas repositorioRevistas;
+        private RepositorioEmprestimo repositorioEmprestimo;
 
-        public TelaEmprestimo(RepositorioEmprestimo repositorioEmprestimo) : base("Emprestimo", repositorioEmprestimo)
+        public TelaEmprestimo(RepositorioEmprestimo repositorioRepositorio) : base("Emprestimo", repositorioRepositorio)
         {
+            repositorioEmprestimo = repositorioRepositorio;
         }
 
         public override void CadastrarRegistro()
@@ -47,6 +49,27 @@ namespace ClubeDaLeitura1._0.Emprestimo
 
                     return;
                 }
+                
+                Emprestimo[] emprestimosAtivos = repositorioEmprestimo.SelecionarEmprestimosAtivos();
+
+                for (int i = 0; i < emprestimosAtivos.Length; i++)
+                {
+                    Emprestimo emprestimoAtivo = emprestimosAtivos[i];
+
+                    if (novoRegistro.Amigo.Id == emprestimoAtivo.Amigo.Id)
+                    {
+                        Console.WriteLine();
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Um amigo selecionado já tem um emprestimo ativo!");
+                        Console.ResetColor();
+
+                        Console.Write("\nDigite ENTER para continuar...");
+                        Console.ReadLine();
+
+                        return;
+                    }
+                }
 
                 repositorio.CadastrarRegistro(novoRegistro);
 
@@ -73,7 +96,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
             Console.Write("Digite o ID da revista que irá ser emprestada: ");
             int idRevista = Convert.ToInt32(Console.ReadLine());
 
-            Revista revistaSelecionada = (Revista)repositorioRevistas.SelecionarRegistroPorId(idRevista);
+            Revistas.Emprestimo revistaSelecionada = (Revistas.Emprestimo)repositorioRevistas.SelecionarRegistroPorId(idRevista);
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nRevista selecionada com sucesso!");
@@ -95,7 +118,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
 
                 Console.WriteLine(
                     "{0, -10} | {1, -30} | {2, -20} | {3, -25} | {4, -25} | {5, -20}",
-                    "Id", "Amigo", "Revista", "Data do Empréstimo", "Data prev. Devolução", "Status"
+                    "Id", "Amigo", "Emprestimo", "Data do Empréstimo", "Data prev. Devolução", "Status"
                 );
 
                 EntidadeBase[] emprestimo = repositorio.SelecionarRegistros();
@@ -117,7 +140,6 @@ namespace ClubeDaLeitura1._0.Emprestimo
 
                     Console.ResetColor();
                 }
-
                 Console.ReadLine();
             }
         }
@@ -156,7 +178,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
         {
             Console.WriteLine();
 
-            Console.WriteLine("Visualização de Revista");
+            Console.WriteLine("Visualização de Emprestimo");
 
             Console.WriteLine();
 
@@ -171,7 +193,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
 
             for (int i = 0; i < revistasDisponiveis.Length; i++)
             {
-                Revista r = (Revista)revistasDisponiveis[i];
+                Revistas.Emprestimo r = (Revistas.Emprestimo)revistasDisponiveis[i];
 
                 if (r == null)
                     continue;

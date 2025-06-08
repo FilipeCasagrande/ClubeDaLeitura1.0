@@ -4,14 +4,14 @@ namespace ClubeDaLeitura1._0.Revistas
 {
     public class RepositorioRevistas : RepositorioBase
     {
-        public EntidadeBase[] SelecionarRevistasDisponiveis()
+        public Emprestimo[] SelecionarRevistasDisponiveis()
         {
             int contadorRevistasDisponiveis = 0;
 
 
             for (int i = 0; i < registros.Length; i++)
             {
-                Revista revistaAtual = (Revista)registros[i];
+                Emprestimo revistaAtual = (Emprestimo)registros[i];
 
                 if (registros[i] == null)
                     continue;
@@ -21,13 +21,13 @@ namespace ClubeDaLeitura1._0.Revistas
                     contadorRevistasDisponiveis++;
             }
 
-            EntidadeBase[] revistasDisponiveis = new EntidadeBase[contadorRevistasDisponiveis];
+            Emprestimo[] revistasDisponiveis = new Emprestimo[contadorRevistasDisponiveis];
 
             int contadorAuxiliar = 0;
 
             for (int i = 0; i < registros.Length; i++)
             {
-                Revista revistaAtual = (Revista)registros[i];
+                Emprestimo revistaAtual = (Emprestimo)registros[i];
 
                 if (revistaAtual == null)
                 {
@@ -35,7 +35,7 @@ namespace ClubeDaLeitura1._0.Revistas
                 }
                 
                 if (revistaAtual.Status == "Disponível")
-                    revistasDisponiveis[contadorAuxiliar++] = registros[i];
+                    revistasDisponiveis[contadorAuxiliar++] = (Emprestimo)registros[i];
             }
             return revistasDisponiveis;
         }
