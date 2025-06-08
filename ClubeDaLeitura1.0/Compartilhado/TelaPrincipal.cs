@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClubeDaLeitura1._0.Amigo;
 using ClubeDaLeitura1._0.Caixas;
+using ClubeDaLeitura1._0.Emprestimo;
 using ClubeDaLeitura1._0.Revistas;
 
 namespace ClubeDaLeitura1._0.Compartilhado
@@ -22,6 +23,9 @@ namespace ClubeDaLeitura1._0.Compartilhado
         private RepositorioRevistas repositorioRevistas;
         private TelaRevistas telaRevistas;
 
+        private RepositorioEmprestimo repositorioEmprestimo;
+        private TelaEmprestimo telaEmprestimo;
+
         public TelaPrincipal()
         {
             repositorioAmigo = new RepositorioAmigo();
@@ -32,6 +36,9 @@ namespace ClubeDaLeitura1._0.Compartilhado
 
             repositorioRevistas = new RepositorioRevistas();
             telaRevistas = new TelaRevistas(repositorioRevistas, repositorioCaixa);
+
+            repositorioEmprestimo = new RepositorioEmprestimo();
+            telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo, repositorioAmigo, repositorioRevistas);
         }
 
         public void ApresentarMenuPrincipal()
@@ -46,7 +53,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
 
             Console.WriteLine("1 - Controle de Amigos");
             Console.WriteLine("2 - Controle de Caixas");
-            Console.WriteLine("3 - Controle de Emprestimo");
+            Console.WriteLine("3 - Controle de Revistas");
             Console.WriteLine("4 - Controle de Empréstimos");
             Console.WriteLine("S - Sair");
 
@@ -68,7 +75,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
                 return telaRevistas;
 
             else if (opcaoEscolhida == '4')
-                return null;
+                return telaEmprestimo;
 
             return null;
         }

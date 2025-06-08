@@ -7,7 +7,5 @@ using ClubeDaLeitura1._0.Compartilhado;
 
 namespace ClubeDaLeitura1._0.Amigo
 {
-    class RepositorioAmigo : RepositorioBase;
-    
-   
+    public class RepositorioAmigo : RepositorioBase;
 }

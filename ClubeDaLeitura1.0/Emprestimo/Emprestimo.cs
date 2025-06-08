@@ -10,12 +10,12 @@ namespace ClubeDaLeitura1._0.Emprestimo
     public class Emprestimo :EntidadeBase
     {
         public Amigos  Amigo {  get; set; }
-        public Revistas.Emprestimo Revista { get; set; }
+        public Revistas.Revistas Revista { get; set; }
         public DateTime DataEmprestimo { get; set; }
         public DateTime DataDevolucao { get; set; }
         public string Status { get; set; }
 
-        public Emprestimo(Amigos amigo, Revistas.Emprestimo revista)
+        public Emprestimo(Amigos amigo, Revistas.Revistas revista)
         {
             Amigo = amigo;
             Revista = revista;
@@ -37,7 +37,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
                 erros += "O campo \"Amigo\" é obrigatório!";
 
             if (Revista == null)
-                erros += "O campo \"Emprestimo\" é obrigatório!";
+                erros += "O campo \"Revistas\" é obrigatório!";
 
             return erros;
         }

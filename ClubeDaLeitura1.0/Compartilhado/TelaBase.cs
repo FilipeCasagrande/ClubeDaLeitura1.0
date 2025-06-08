@@ -17,7 +17,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
             this.repositorio = repositorio;
         }
 
-        public char ApresentarMenu()
+        public virtual char ApresentarMenu()
         {
             ExibirCabecalho();
 
