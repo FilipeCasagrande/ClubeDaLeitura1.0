@@ -122,6 +122,5 @@ namespace ClubeDaLeitura1._0.Caixas
             return caixa;
         }
 
-
     }
 }
