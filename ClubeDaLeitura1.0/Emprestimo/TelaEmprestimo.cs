@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClubeDaLeitura1._0.Amigo;
-using ClubeDaLeitura1._0.Caixas;
+﻿using ClubeDaLeitura1._0.Amigo;
 using ClubeDaLeitura1._0.Compartilhado;
 using ClubeDaLeitura1._0.Revistas;
 
@@ -17,14 +11,14 @@ namespace ClubeDaLeitura1._0.Emprestimo
         private RepositorioRevistas repositorioRevistas;
 
         public TelaEmprestimo(
-            RepositorioEmprestimo repositorio, 
-            RepositorioAmigo repositorioAmigo, 
-            RepositorioRevistas repositorioRevistas) 
+            RepositorioEmprestimo repositorio,
+            RepositorioAmigo repositorioAmigo,
+            RepositorioRevistas repositorioRevistas)
             : base("Emprestimos", repositorio)
         {
             repositorioEmprestimo = repositorio;
             this.repositorioAmigo = repositorioAmigo;
-            this.repositorioRevistas= repositorioRevistas;
+            this.repositorioRevistas = repositorioRevistas;
         }
 
         public override char ApresentarMenu()
@@ -44,7 +38,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
             return opcaoEscolhida;
         }
 
-        public override void CadastrarRegistro()
+        public void CadastrarEmprestimo()
         {
             {
                 ExibirCabecalho();
@@ -72,7 +66,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
 
                     return;
                 }
-                
+
                 Emprestimo[] emprestimosAtivos = repositorioEmprestimo.SelecionarEmprestimosAtivos();
 
                 for (int i = 0; i < emprestimosAtivos.Length; i++)
@@ -94,12 +88,60 @@ namespace ClubeDaLeitura1._0.Emprestimo
                     }
                 }
 
+                novoRegistro.Revista.Status = "Emprestada";
                 repositorio.CadastrarRegistro(novoRegistro);
 
                 Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
                 Console.ReadLine();
             }
         }
+        public void DevolverEmprestimo()
+        {
+            ExibirCabecalho();
+
+            Console.WriteLine($"Devolução de {nomeEntidade}");
+
+            Console.WriteLine();
+
+            VisualizarEmprestimosAtivos();
+
+            Console.Write("Digite o ID do empréstimo que que deseja concluir: ");
+            int idEmprestimo = Convert.ToInt32(Console.ReadLine());
+
+            Emprestimo emprestimoSelecionado = (Emprestimo)repositorio.SelecionarRegistroPorId(idEmprestimo);
+
+            if (emprestimoSelecionado == null)
+            {
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("O empréstimo selecionado não existe!");
+                Console.ResetColor();
+
+                Console.Write("\nDigite ENTER para continuar...");
+                Console.ReadLine();
+
+                return;
+            }
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("\nDeseja confirmar a conclusão do empréstimo? (S/N): ");
+            Console.ResetColor();
+            string resposta = Console.ReadLine();
+
+            if (resposta.ToUpper() == "S")
+            {
+                emprestimoSelecionado.Status = "Concluido";
+                emprestimoSelecionado.Revista.Status = "Disponível";
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n{nomeEntidade} Devolvido com sucesso!");
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.ReadLine();
+            }
+        }
+
 
         protected override Emprestimo ObterDados()
         {
@@ -140,7 +182,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
                 Console.WriteLine();
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -30} | {2, -20} | {3, -40} | {4, -40} | {5, -20}",
+                    "{0, -10} | {1, -15} | {2, -15} | {3, -20} | {4, -20} | {5, -10}",
                     "Id", "Amigo", "Revistas", "Data do Empréstimo", "Data prev. Devolução", "Status"
                 );
 
@@ -154,11 +196,45 @@ namespace ClubeDaLeitura1._0.Emprestimo
                         continue;
 
                     if (e.Status == "Atrasado")
-                        Console.ForegroundColor= ConsoleColor.DarkYellow;
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
 
                     Console.WriteLine(
-                     "{0, -10} | {1, -30} | {2, -20} | {3, -40} | {4, -40} | {5, -20}",
-                        e.Id, e.Amigo.Nome, e.Revista.Titulo, e.DataEmprestimo.ToShortDateString, e.DataDevolucao.ToShortDateString, e.Status
+                     "{0, -10} | {1, -15} | {2, -15} | {3, -20} | {4, -20} | {5, -10}",
+                        e.Id, e.Amigo.Nome, e.Revista.Titulo, e.DataEmprestimo.ToShortDateString(), e.DataDevolucao.ToShortDateString(), e.Status
+                    );
+
+                    Console.ResetColor();
+                }
+                Console.ReadLine();
+            }
+        }
+        public void VisualizarEmprestimosAtivos()
+        {
+            {
+                Console.WriteLine("Visualização de Empréstimos");
+
+                Console.WriteLine();
+
+                Console.WriteLine(
+                    "{0, -10} | {1, -15} | {2, -15} | {3, -20} | {4, -20} | {5, -10}",
+                    "Id", "Amigo", "Revistas", "Data do Empréstimo", "Data prev. Devolução", "Status"
+                );
+
+                EntidadeBase[] emprestimosAtivos = repositorioEmprestimo.SelecionarEmprestimosAtivos();
+
+                for (int i = 0; i < emprestimosAtivos.Length; i++)
+                {
+                    Emprestimo e = (Emprestimo)emprestimosAtivos[i];
+
+                    if (e == null)
+                        continue;
+
+                    if (e.Status == "Atrasado")
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+                    Console.WriteLine(
+                     "{0, -10} | {1, -15} | {2, -15} | {3, -20} | {4, -20} | {5, -10}",
+                        e.Id, e.Amigo.Nome, e.Revista.Titulo, e.DataEmprestimo.ToShortDateString(), e.DataDevolucao.ToShortDateString(), e.Status
                     );
 
                     Console.ResetColor();
@@ -197,7 +273,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
             }
             Console.ReadLine();
         }
-        private  void VisualizarRevistasDisponiveis()
+        private void VisualizarRevistasDisponiveis()
         {
             Console.WriteLine();
 

@@ -22,7 +22,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
                     continue;
 
 
-                if (EmprestimoAtual.Status == "Disponível" || EmprestimoAtual.Status == "Atrasado")
+                if (EmprestimoAtual.Status == "Aberto" || EmprestimoAtual.Status == "Atrasado")
                     contadorEmprestimosDisponiveis++;
             }
 
@@ -39,7 +39,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
                     continue;
                 }
 
-                if (emprestimoAtual.Status == "Disponível")
+                if (emprestimoAtual.Status == "Aberto")
                     emprestimosDisponiveis[contadorAuxiliar++] = (Emprestimo)registros[i];
             }
             return emprestimosDisponiveis;

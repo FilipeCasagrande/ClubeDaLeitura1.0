@@ -82,7 +82,7 @@ namespace ClubeDaLeitura1._0.Revistas
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
+                "{0, -10} | {1, -15} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
                 "Id", "Título", "Edição", "Ano de Publicação", "Caixa", "Status"
             );
 
@@ -96,7 +96,7 @@ namespace ClubeDaLeitura1._0.Revistas
                     continue;
 
                 Console.WriteLine(
-                 "{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
+                 "{0, -10} | {1, -15} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
                     r.Id, r.Titulo, r.NumeroEdicao, r.AnoPublicacao, r.Caixa.Etiqueta, r.Status
                 );
             }

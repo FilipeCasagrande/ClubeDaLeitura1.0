@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura1._0.Compartilhado;
+using ClubeDaLeitura1._0.Emprestimo;
 using System;
 
 namespace ClubeDaLeitura1._0
@@ -24,26 +25,50 @@ namespace ClubeDaLeitura1._0
                     if (opcaoEscolhida == 'S' || opcaoEscolhida == 's')
                         break;
 
-                    switch (opcaoEscolhida)
+
+                    if (telaEscolhida is TelaEmprestimo)
                     {
-                        case '1':
-                            telaEscolhida.CadastrarRegistro();
-                            break;
+                        TelaEmprestimo telaEmprestimo = (TelaEmprestimo)telaEscolhida;
 
-                        case '2':
-                            telaEscolhida.VisualizarRegistros(true);
-                            break;
+                        switch (opcaoEscolhida)
+                        {
 
-                        case '3':
-                            telaEscolhida.EditarRegistro();
-                            break;
+                            case '1':
+                                telaEmprestimo.CadastrarEmprestimo();
+                                break;
 
-                        case '4':
-                            telaEscolhida.ExcluirRegistro();
-                            break;
+                            case '2':
+                                telaEmprestimo.DevolverEmprestimo();
+                                break;
+
+                            case '3':
+                                telaEmprestimo.VisualizarRegistros(true);
+                                break;
+                        }
+                    }
+
+                    else
+                    {
+                        switch (opcaoEscolhida)
+                        {
+                            case '1':
+                                telaEscolhida.CadastrarRegistro();
+                                break;
+
+                            case '2':
+                                telaEscolhida.VisualizarRegistros(true);
+                                break;
+
+                            case '3':
+                                telaEscolhida.EditarRegistro();
+                                break;
+
+                            case '4':
+                                telaEscolhida.ExcluirRegistro();
+                                break;
+                        }
                     }
                 }
-
             }
         }
     }
