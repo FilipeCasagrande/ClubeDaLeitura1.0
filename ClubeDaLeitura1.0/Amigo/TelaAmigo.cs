@@ -4,10 +4,13 @@ namespace ClubeDaLeitura1._0.Amigo
 {
      public class TelaAmigo : TelaBase
     {
-    public TelaAmigo(RepositorioBase repositorio) : base("Amigo", repositorio)
+    public TelaAmigo(RepositorioBase repositorio) : base("Amigos", repositorio)
         {
 
         }
+
+
+
         public override void CadastrarRegistro()
         {
             ExibirCabecalho();
@@ -16,7 +19,7 @@ namespace ClubeDaLeitura1._0.Amigo
 
             Console.WriteLine();
 
-            Amigo novoRegistro = (Amigo)ObterDados();
+            Amigos novoRegistro = (Amigos)ObterDados();
 
             string erros = novoRegistro.Validar();
 
@@ -40,7 +43,7 @@ namespace ClubeDaLeitura1._0.Amigo
 
             for (int i = 0; i < registros.Length; i++)
             {
-                Amigo amigoRegistrado = (Amigo)registros[i];
+                Amigos amigoRegistrado = (Amigos)registros[i];
 
                 if (amigoRegistrado == null)
                     continue;
@@ -84,7 +87,7 @@ namespace ClubeDaLeitura1._0.Amigo
 
             for (int i = 0; i < amigos.Length; i++)
             {
-                Amigo a = (Amigo)amigos[i];
+                Amigos a = (Amigos)amigos[i];
 
                 if (a == null)
                     continue;
@@ -109,7 +112,7 @@ namespace ClubeDaLeitura1._0.Amigo
             Console.Write("Digite o telefone do amigo ou responsável: ");
             string telefone = Console.ReadLine();
 
-            Amigo amigo = new Amigo(nome, nomeResponsavel, telefone);
+            Amigos amigo = new Amigos(nome, nomeResponsavel, telefone);
 
             return amigo;
         }

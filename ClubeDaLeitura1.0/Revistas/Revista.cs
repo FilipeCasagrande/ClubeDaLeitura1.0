@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using ClubeDaLeitura1._0.Caixas;
 using ClubeDaLeitura1._0.Compartilhado;
 
 namespace ClubeDaLeitura1._0.Revistas
 {
-    public class Revistas : EntidadeBase
+    public class Revista : EntidadeBase
     {
         public string Titulo;
         public int NumeroEdicao;
@@ -17,7 +18,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
         public string Status;
 
-        public Revistas(string titulo, int numeroEdicao, int anoPublicacao, Caixa caixa)
+        public Revista(string titulo, int numeroEdicao, int anoPublicacao, Caixa caixa)
         {
             Titulo = titulo;
             NumeroEdicao = numeroEdicao;
@@ -29,7 +30,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
         public override void AtualizarRegistro(EntidadeBase registroAtualizado)
         {
-            Revistas revistaAtualizada = (Revistas)registroAtualizado;
+            Revista revistaAtualizada = (Revista)registroAtualizado;
 
             Titulo = revistaAtualizada.Titulo;
             NumeroEdicao = revistaAtualizada.NumeroEdicao;

@@ -21,7 +21,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             Console.WriteLine();
 
-            Revistas novoRegistro = (Revistas)ObterDados();
+            Revista novoRegistro = (Revista)ObterDados();
 
             string erros = novoRegistro.Validar();
 
@@ -45,7 +45,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             for (int i = 0; i < registros.Length; i++)
             {
-                Revistas revistaRegistrada = (Revistas)registros[i];
+                Revista revistaRegistrada = (Revista)registros[i];
 
                 if (revistaRegistrada == null)
                     continue;
@@ -77,7 +77,7 @@ namespace ClubeDaLeitura1._0.Revistas
             if (exibirCabecalho == true)
                 ExibirCabecalho();
 
-            Console.WriteLine("Visualização de Revistas");
+            Console.WriteLine("Visualização de Revista");
 
             Console.WriteLine();
 
@@ -90,7 +90,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             for (int i = 0; i < revistas.Length; i++)
             {
-                Revistas r = (Revistas)revistas[i];
+                Revista r = (Revista)revistas[i];
 
                 if (r == null)
                     continue;
@@ -122,7 +122,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             Caixa caixaSelecionada = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);
 
-            Revistas revista = new Revistas(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
+            Revista revista = new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
 
             return revista;
         }

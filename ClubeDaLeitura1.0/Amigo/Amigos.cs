@@ -8,13 +8,13 @@ using ClubeDaLeitura1._0.Compartilhado;
 
 namespace ClubeDaLeitura1._0.Amigo
 {
-    public class Amigo : EntidadeBase
+    public class Amigos : EntidadeBase
     {
         public string Nome { get; set; }
         public string NomeResponsavel { get; set; }
         public string Telefone { get; set; }
 
-        public Amigo(string nome, string nomeResponsavel, string telefone)
+        public Amigos(string nome, string nomeResponsavel, string telefone)
         {
             Nome = nome;
             NomeResponsavel = nomeResponsavel;
@@ -23,7 +23,7 @@ namespace ClubeDaLeitura1._0.Amigo
 
         public override void AtualizarRegistro(EntidadeBase registroAtualizado)
         {
-            Amigo amigoAtualizado = (Amigo)registroAtualizado;
+            Amigos amigoAtualizado = (Amigos)registroAtualizado;
 
             this.Nome = amigoAtualizado.Nome;
             this.NomeResponsavel = amigoAtualizado.NomeResponsavel;
