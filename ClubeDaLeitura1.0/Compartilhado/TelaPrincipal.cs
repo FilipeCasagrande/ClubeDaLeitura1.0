@@ -62,7 +62,6 @@ namespace ClubeDaLeitura1._0.Compartilhado
             Console.Write("Escolha uma das opções: ");
             opcaoEscolhida = Console.ReadLine()[0]; 
         }
-
         public TelaBase ObterTela()
         {
             if (opcaoEscolhida == '1')

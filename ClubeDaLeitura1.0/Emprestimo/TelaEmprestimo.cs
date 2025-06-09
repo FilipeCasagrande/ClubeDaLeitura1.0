@@ -14,7 +14,7 @@ namespace ClubeDaLeitura1._0.Emprestimo
             RepositorioEmprestimo repositorio,
             RepositorioAmigo repositorioAmigo,
             RepositorioRevistas repositorioRevistas)
-            : base("Emprestimos", repositorio)
+            : base("Emprestimo", repositorio)
         {
             repositorioEmprestimo = repositorio;
             this.repositorioAmigo = repositorioAmigo;

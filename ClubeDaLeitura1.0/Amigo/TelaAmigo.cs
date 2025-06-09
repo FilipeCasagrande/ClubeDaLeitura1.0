@@ -4,7 +4,7 @@ namespace ClubeDaLeitura1._0.Amigo
 {
      public class TelaAmigo : TelaBase
     {
-    public TelaAmigo(RepositorioBase repositorio) : base("Amigos", repositorio)
+    public TelaAmigo(RepositorioBase repositorio) : base("Amigo", repositorio)
         {
 
         }

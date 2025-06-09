@@ -8,14 +8,12 @@ namespace ClubeDaLeitura1._0.Revistas
         {
             int contadorRevistasDisponiveis = 0;
 
-
             for (int i = 0; i < registros.Length; i++)
             {
                 Revistas revistaAtual = (Revistas)registros[i];
 
                 if (registros[i] == null)
                     continue;
-               
                 
                 if (revistaAtual.Status == "Disponível")
                     contadorRevistasDisponiveis++;

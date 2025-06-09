@@ -8,7 +8,7 @@ namespace ClubeDaLeitura1._0.Revistas
         private RepositorioCaixa repositorioCaixa;
 
         public TelaRevistas(RepositorioRevistas repositorio, RepositorioCaixa repositorioCaixa)
-            : base("Revistas", repositorio)
+            : base("Revista", repositorio)
         {
             this.repositorioCaixa = repositorioCaixa;
         }
@@ -68,7 +68,7 @@ namespace ClubeDaLeitura1._0.Revistas
 
             repositorio.CadastrarRegistro(novoRegistro);
 
-            Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.WriteLine($"\n{nomeEntidade} cadastrada com sucesso!");
             Console.ReadLine();
         }
 

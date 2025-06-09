@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClubeDaLeitura1._0.Compartilhado;
-using ClubeDaLeitura1._0.Revistas;
+﻿using ClubeDaLeitura1._0.Compartilhado;
 
 namespace ClubeDaLeitura1._0.Emprestimo
 {
@@ -20,7 +14,6 @@ namespace ClubeDaLeitura1._0.Emprestimo
 
                 if (registros[i] == null)
                     continue;
-
 
                 if (EmprestimoAtual.Status == "Aberto" || EmprestimoAtual.Status == "Atrasado")
                     contadorEmprestimosDisponiveis++;
