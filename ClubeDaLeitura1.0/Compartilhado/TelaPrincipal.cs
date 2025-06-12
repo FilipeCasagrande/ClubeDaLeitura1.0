@@ -29,7 +29,7 @@ namespace ClubeDaLeitura1._0.Compartilhado
         public TelaPrincipal()
         {
             repositorioAmigo = new RepositorioAmigo();
-            telaAmigo = new TelaAmigo(repositorioAmigo);
+            telaAmigo = new TelaAmigo(repositorioAmigo, repositorioEmprestimo);
 
             repositorioCaixa = new RepositorioCaixa();
             telaCaixa = new TelaCaixa(repositorioCaixa);
@@ -40,7 +40,6 @@ namespace ClubeDaLeitura1._0.Compartilhado
             repositorioEmprestimo = new RepositorioEmprestimo();
             telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo, repositorioAmigo, repositorioRevistas);
         }
-
         public void ApresentarMenuPrincipal()
         {
             Console.Clear();

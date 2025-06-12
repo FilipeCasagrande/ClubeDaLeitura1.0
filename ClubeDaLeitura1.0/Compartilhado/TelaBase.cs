@@ -16,7 +16,6 @@ namespace ClubeDaLeitura1._0.Compartilhado
             this.nomeEntidade = nomeEntidade;
             this.repositorio = repositorio;
         }
-
         public virtual char ApresentarMenu()
         {
             ExibirCabecalho();
@@ -34,7 +33,6 @@ namespace ClubeDaLeitura1._0.Compartilhado
 
             return opcaoEscolhida;
         }
-
         public virtual void CadastrarRegistro()
         {
             ExibirCabecalho();
@@ -68,7 +66,6 @@ namespace ClubeDaLeitura1._0.Compartilhado
             Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
             Console.ReadLine();
         }
-
         public void EditarRegistro()
         {
             ExibirCabecalho();
@@ -112,7 +109,6 @@ namespace ClubeDaLeitura1._0.Compartilhado
             Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
             Console.ReadLine();
         }
-
         public abstract void VisualizarRegistros(bool exibirCabecalho);
 
         protected void ExibirCabecalho()
@@ -121,7 +117,6 @@ namespace ClubeDaLeitura1._0.Compartilhado
             Console.WriteLine($"Gestão de {nomeEntidade}s");
             Console.WriteLine();
         }
-
         protected abstract EntidadeBase ObterDados();
     }
 }

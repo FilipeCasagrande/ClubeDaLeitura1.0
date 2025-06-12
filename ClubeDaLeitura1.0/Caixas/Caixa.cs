@@ -7,7 +7,6 @@ namespace ClubeDaLeitura1._0.Caixas
         public string Etiqueta;
         public string Cor;
         public int DiasEmprestimo;
-
         public Caixa(string etiqueta, string cor)
         {
             Etiqueta = etiqueta;
@@ -46,8 +45,5 @@ namespace ClubeDaLeitura1._0.Caixas
 
             return erros;
         }
-
-
-
     }
 }

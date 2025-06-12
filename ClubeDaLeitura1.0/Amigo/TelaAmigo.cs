@@ -1,12 +1,14 @@
 ﻿using ClubeDaLeitura1._0.Compartilhado;
+using ClubeDaLeitura1._0.Emprestimo;
 
 namespace ClubeDaLeitura1._0.Amigo
 {
-     public class TelaAmigo : TelaBase
+    public class TelaAmigo : TelaBase
     {
-    public TelaAmigo(RepositorioBase repositorio) : base("Amigo", repositorio)
+        private RepositorioEmprestimo repositorioEmprestimo;
+        public TelaAmigo(RepositorioBase repositorio, RepositorioEmprestimo repositorioEmprestimo) : base("Amigo", repositorio)
         {
-
+            this.repositorioEmprestimo = repositorioEmprestimo;
         }
 
         public override void CadastrarRegistro()
@@ -77,11 +79,14 @@ namespace ClubeDaLeitura1._0.Amigo
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -30} | {2, -30} | {3, -20}",
-                "Id", "Nome", "Responsável", "Telefone"
+                "{0, -10} | {1, -30} | {2, -30} | {3, -20} | {4, 15}",
+                "Id", "Nome", "Responsável", "Telefone", "Multa Ativa"
             );
 
             EntidadeBase[] amigos = repositorio.SelecionarRegistros();
+
+            EntidadeBase[] emprestimos = repositorioEmprestimo.SelecionarRegistros();
+
 
             for (int i = 0; i < amigos.Length; i++)
             {
@@ -90,9 +95,28 @@ namespace ClubeDaLeitura1._0.Amigo
                 if (a == null)
                     continue;
 
+                bool amigoTemMultaAtiva = false;
+
+                for (int j = 0; i <= emprestimos.Length; j++)
+                {
+                    Emprestimo.Emprestimo e = (Emprestimo.Emprestimo)emprestimos[j];
+
+                    if (e == null) 
+                        continue;
+
+                    if (a == e.Amigo && e.Multa != null)
+                    {
+                        if (!e.Multa.EstaPaga)
+                        {
+                            amigoTemMultaAtiva = true;
+                        }
+                    }
+                }
+
+                string stringMultaAtiva = amigoTemMultaAtiva ? "sim" : "não";
                 Console.WriteLine(
-                  "{0, -10} | {1, -30} | {2, -30} | {3, -20}",
-                    a.Id, a.Nome, a.NomeResponsavel, a.Telefone
+                  "{0, -10} | {1, -30} | {2, -30} | {3, -20} | {4, -15}",
+                    a.Id, a.Nome, a.NomeResponsavel, a.Telefone, stringMultaAtiva
                 );
             }
 

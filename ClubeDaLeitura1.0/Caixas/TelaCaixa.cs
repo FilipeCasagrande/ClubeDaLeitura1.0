@@ -8,7 +8,6 @@ namespace ClubeDaLeitura1._0.Caixas
         public TelaCaixa(RepositorioCaixa repositorio) : base("Caixa", repositorio)
         {
         }
-
         public override void CadastrarRegistro()
         {
             ExibirCabecalho();
@@ -67,7 +66,6 @@ namespace ClubeDaLeitura1._0.Caixas
             Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
             Console.ReadLine();
         }
-
         
         public override void VisualizarRegistros(bool exibirCabecalho)
         {
@@ -100,7 +98,6 @@ namespace ClubeDaLeitura1._0.Caixas
 
             Console.ReadLine();
         }
-
         protected override EntidadeBase ObterDados()
         {
             Console.Write("Digite a etiqueta da caixa: ");
